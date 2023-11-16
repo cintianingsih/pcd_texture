@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture Generator</title>
+</head>
+<body>
+    <h1>Texture Generator</h1>
+    <form action="/generate" method="post" enctype="multipart/form-data">
+        <label for="style">Style Image:</label>
+        <input type="file" name="style" accept="image/*" required>
+        <br>
+        <label for="content">Content Image:</label>
+        <input type="file" name="content" accept="image/*" required>
+        <br>
+        <label for="content_strength">Content Strength:</label>
+        <input type="text" name="content_strength" >
+        <br>
+        <button type="submit">Generate Texture</button>
+    </form>
+</body>
+</html>
