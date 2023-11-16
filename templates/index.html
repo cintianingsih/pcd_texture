@@ -20,5 +20,48 @@
         <br>
         <button type="submit">Generate Texture</button>
     </form>
+
+    <h2>Texture Mixing</h2>
+    <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
+        <label for="style1">Style Image 1:</label>
+        <input type="file" name="style1" accept="image/*" required>
+        <br>
+        <label for="style2">Style Image 2:</label>
+        <input type="file" name="style2" accept="image/*" required>
+        <br>
+        <label for="mixing_alpha">Mixing Alpha:</label>
+        <input type="text" name="mixing_alpha">
+        <br>
+        <button type="submit">Run Texture Mixing</button>
+    </form>
+
+    <h2>Color Transfer</h2>
+    <form action="/Color_transfer" method="post" enctype="multipart/form-data">
+        <label for="style_color">Style Image:</label>
+        <input type="file" name="style" accept="image/*" required>
+        <br>
+        <label for="content_color">Content Image:</label>
+        <input type="file" name="content" accept="image/*" required>
+        <br>
+        <label for="style_scale">Style Scale:</label>
+        <input type="text" name="style_scale">
+        <br>
+        <label for="content_strength_color">Content Strength:</label>
+        <input type="text" name="content_strength">
+        <br>
+        <button type="submit">Run Color Transfer</button>
+    </form>
+
+    <h2>Texture Synthesis</h2>
+    <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
+        <label for="style_synthesis">Style Image:</label>
+        <input type="file" name="style" accept="image/*" required>
+        <br>
+        <label for="size_synthesis">Size:</label>
+        <input type="text" name="size">
+        <br>
+        <button type="submit">Run Texture Synthesis</button>
+    </form>
+
 </body>
 </html>
