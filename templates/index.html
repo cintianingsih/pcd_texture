@@ -21,6 +21,11 @@
         <button type="submit">Generate Texture</button>
     </form>
 
+    {% if latest_image %}
+        <h1>Generated Image</h1>
+        <img src="{{ url_for('serve_generated_image', filename=latest_image) }}" alt="Generated Image">
+    {% endif %}
+
     <h2>Texture Mixing</h2>
     <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
         <label for="style1">Style Image 1:</label>
@@ -62,11 +67,5 @@
         <br>
         <button type="submit">Run Texture Synthesis</button>
     </form>
-
-    
-    {% if latest_image %}
-        <h1>Generated Image</h1>
-        <img src="{{ url_for('serve_generated_image', filename=latest_image) }}" alt="Generated Image">
-    {% endif %}
 </body>
 </html>
