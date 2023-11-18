@@ -24,6 +24,10 @@
     {% if generated_images %}
         {% for image in generated_images %}
             <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+            <br>
+            <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+                <button type="button">Download Image</button>
+            </a>
         {% endfor %}
     {% else %}
         <p>No generated images available.</p>
@@ -45,6 +49,10 @@
     {% if generated_images_mixing %}
     {% for image in generated_images_mixing %}
         <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+        <br>
+        <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+            <button type="button">Download Image</button>
+        </a>
     {% endfor %}
 {% else %}
     <p>No generated images available for Texture Mixing.</p>
@@ -68,6 +76,10 @@
     {% if generated_images_color_transfer %}
     {% for image in generated_images_color_transfer %}
         <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+        <br>
+        <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+            <button type="button">Download Image</button>
+        </a>
     {% endfor %}
 {% else %}
     <p>No generated images available for Color Transfer.</p>
@@ -86,6 +98,10 @@
     {% if generated_images_synthesis %}
     {% for image in generated_images_synthesis %}
         <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+        <br>
+        <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+            <button type="button">Download Image</button>
+        </a>
     {% endfor %}
 {% else %}
     <p>No generated images available for Texture Synthesis.</p>
