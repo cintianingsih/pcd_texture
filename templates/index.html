@@ -20,5 +20,10 @@
         <br>
         <button type="submit">Generate Texture</button>
     </form>
+    
+    {% if latest_image %}
+        <h1>Generated Image</h1>
+        <img src="{{ url_for('serve_generated_image', filename=latest_image) }}" alt="Generated Image">
+    {% endif %}
 </body>
 </html>
