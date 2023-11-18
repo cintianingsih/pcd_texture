@@ -72,6 +72,18 @@
             <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
                 <button type="button">Download Image</button>
             </a>
+            <br>
+            <form action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
+                <button type="submit">Penambahan Contras</button>
+            </form>
+            <br>
+            <form action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
+                <button type="submit">Pengurangan Contras</button>
+            </form>
+            <br>
+            <form action="{{ url_for('bandFilterPass') }}" method="POST" enctype="multipart/form-data">
+                <button type="submit">Bandpass Filter</button>
+            </form>
         {% endfor %}
     {% else %}
         <p>No generated images available.</p>

@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session
 import subprocess
+import util
 
 app = Flask(__name__)
 
@@ -15,8 +16,8 @@ def generate_texture():
     content_strength = request.form['content_strength']
 
     # Save the uploaded images to the static directory
-    style_path = f'static/style/{style.filename}'
-    content_path = f'static/content/{content.filename}'
+    style_path = f'static/style/img_input1.png'
+    content_path = f'static/content/img_input2.png'
     style.save(style_path)
     content.save(content_path)
 
@@ -51,8 +52,8 @@ def texture_mixing():
     mixing_alpha = request.form['mixing_alpha']
 
     # Save the uploaded images to the static directory
-    style1_path = f'static/style/{style1.filename}'
-    style2_path = f'static/style/{style2.filename}'
+    style1_path = f'static/style/img_input1.png'
+    style2_path = f'static/content/img_input2.png'
     style1.save(style1_path)
     style2.save(style2_path)
 
@@ -75,8 +76,8 @@ def color_transfer():
     content_strength = request.form['content_strength']
 
     # Save the uploaded images to the static directory
-    style_path = f'static/style/{style.filename}'
-    content_path = f'static/content/{content.filename}'
+    style_path = f'static/style/img_input1.png'
+    content_path = f'static/content/img_input2.png'
     style.save(style_path)
     content.save(content_path)
 
@@ -101,7 +102,7 @@ def texture_synthesis():
     size = request.form['size']
 
     # Save the uploaded style image to the static directory
-    style_path = f'static/style/{style.filename}'
+    style_path = f'static/style/img_input1.png'
     style.save(style_path)
 
     # Run the Python script for texture synthesis using subprocess
@@ -114,6 +115,34 @@ def texture_synthesis():
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
+
+@app.route("/brightness_multiplication", methods=["POST"])
+def brightness_multiplication():
+    util.brightness_multiplication()
+
+    output_folder = 'output'
+    generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
+    return render_template('index.html', generated_images=generated_images)
+    # return render_template("index.html", file_path="output/img_result.png")
+
+@app.route("/brightness_division", methods=["POST"])
+def brightness_division():
+    util.brightness_division()
+
+    output_folder = 'output'
+    generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
+    return render_template('index.html', generated_images=generated_images)
+    # return render_template("index.html", file_path="output/img_result.png")
+
+#bandpass filter
+@app.route("/bandFilterPass", methods=["POST"])
+def bandFilterPass():
+    util.bandFilterPass()
+
+    output_folder = 'output'
+    generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
+    return render_template('index.html', generated_images=generated_images)
+    # return render_template("index.html", file_path="output/img_result.png")
 
 if __name__ == '__main__':
     app.run(debug=True)

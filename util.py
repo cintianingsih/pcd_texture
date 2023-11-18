@@ -1,6 +1,7 @@
 from argparse import Namespace
 import os
 from typing import Tuple
+import cv2
 
 import numpy as np
 import torch
@@ -97,3 +98,29 @@ def to_nhwc(x: Tensor):
 
 def resize(x: Tensor, size: Tuple[int, int]):
     return interpolate(x, size=size, mode="bicubic", align_corners=False, antialias=True)
+
+def brightness_multiplication():
+    img = Image.open("output/img_result.png")
+    img_arr = np.asarray(img)
+    img_arr = img_arr*1.25
+    img_arr = np.clip(img_arr, 0, 255)
+    new_arr = img_arr.astype('uint8')
+    new_img = Image.fromarray(new_arr)
+    new_img.save("output/img_result.png")
+
+def brightness_division():
+    img = Image.open("output/img_result.png")
+    img_arr = np.asarray(img)
+    img_arr = img_arr/1.25
+    img_arr = np.clip(img_arr, 0, 255)
+    new_arr = img_arr.astype('uint8')
+    new_img = Image.fromarray(new_arr)
+    new_img.save("output/img_result.png")
+
+def bandFilterPass():
+    img = cv2.imread("output/img_result.png")
+    # create the band pass filter
+    bandFilter = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])
+    # apply the band pass filter to the image
+    bandFilterImage = cv2.filter2D(img,-1,bandFilter)
+    cv2.imwrite("output/img_result.png", bandFilterImage)
