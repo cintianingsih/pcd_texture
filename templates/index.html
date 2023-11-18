@@ -20,14 +20,6 @@
         <br>
         <button type="submit">Generate Texture</button>
     </form>
-    <h1>Generated Images</h1>
-    {% if generated_images %}
-        {% for image in generated_images %}
-            <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-        {% endfor %}
-    {% else %}
-        <p>No generated images available.</p>
-    {% endif %}
     </form>
     <h2>Texture Mixing</h2>
     <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
@@ -41,14 +33,8 @@
         <input type="text" name="mixing_alpha">
         <br>
         <button type="submit">Run Texture Mixing</button>
+        
     </form>
-    {% if generated_images_mixing %}
-    {% for image in generated_images_mixing %}
-        <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-    {% endfor %}
-{% else %}
-    <p>No generated images available for Texture Mixing.</p>
-{% endif %}
     <h2>Color Transfer</h2>
     <form action="/Color_transfer" method="post" enctype="multipart/form-data">
         <label for="style_color">Style Image:</label>
@@ -65,13 +51,6 @@
         <br>
         <button type="submit">Run Color Transfer</button>
     </form>
-    {% if generated_images_color_transfer %}
-    {% for image in generated_images_color_transfer %}
-        <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-    {% endfor %}
-{% else %}
-    <p>No generated images available for Color Transfer.</p>
-{% endif %}
 
     <h2>Texture Synthesis</h2>
     <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
@@ -83,13 +62,17 @@
         <br>
         <button type="submit">Run Texture Synthesis</button>
     </form>
-    {% if generated_images_synthesis %}
-    {% for image in generated_images_synthesis %}
-        <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-    {% endfor %}
-{% else %}
-    <p>No generated images available for Texture Synthesis.</p>
-{% endif %}
-
 </body>
 </html>
+<h1>Generated Images</h1>
+    {% if generated_images %}
+        {% for image in generated_images %}
+            <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+            <br>
+            <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+                <button type="button">Download Image</button>
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>No generated images available.</p>
+    {% endif %}
