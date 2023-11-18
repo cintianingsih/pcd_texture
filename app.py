@@ -123,7 +123,7 @@ def brightness_multiplication():
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
-    # return render_template("index.html", file_path="output/img_result.png")
+
 
 @app.route("/brightness_division", methods=["POST"])
 def brightness_division():
@@ -132,7 +132,6 @@ def brightness_division():
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
-    # return render_template("index.html", file_path="output/img_result.png")
 
 #bandpass filter
 @app.route("/bandFilterPass", methods=["POST"])
@@ -142,7 +141,7 @@ def bandFilterPass():
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
-    # return render_template("index.html", file_path="output/img_result.png")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
