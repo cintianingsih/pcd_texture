@@ -3,12 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import subprocess
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 @app.route('/')
 def index():
-    latest_image = session.get('latest_image', None)
-    return render_template('index.html', latest_image=latest_image)
+    return render_template('index.html')
 
 @app.route('/generate', methods=['POST'])
 def generate_texture():
@@ -29,22 +27,18 @@ def generate_texture():
         '--content', content_path,
         '--content_strength', content_strength
     ])
-     # Get the latest generated image dynamically
-    latest_image = get_latest_generated_image()
-
-    # Store the latest processed image filename in the session
-    session['latest_image'] = latest_image
-
-    return redirect(url_for('index'))
-
-def get_latest_generated_image():
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
-    
-    # Sort filenames based on the time they were last modified
-    generated_images.sort(key=lambda x: os.path.getmtime(os.path.join(output_folder, x)), reverse=True)
+    return render_template('index.html', generated_images=generated_images)
 
-    return generated_images[0] if generated_images else None
+
+def get_generated_images(style_filename, content_filename, content_strength):
+    # Modify this function based on how your generated images are named
+    generated_images = [
+        f'output/{style_filename}_blend{content_strength}_hist_modehist.png',
+        # Add other generated image filenames as needed
+    ]
+    return generated_images
 
 @app.route('/generated/<filename>')
 def serve_generated_image(filename):

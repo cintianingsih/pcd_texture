@@ -1,4 +1,5 @@
 from argparse import Namespace
+import os
 from typing import Tuple
 
 import numpy as np
@@ -42,22 +43,14 @@ def get_size(size: int, scale: float, h: int, w: int, oversize: bool = False):
     return round32(size), round32(hsize)
 
 def save_image(output: Tensor, args: Namespace):
-    outs = [name(style) for style in args.style]
-    if len(args.style) > 1:
-        outs += ["blend" + str(args.mixing_alpha)]
-    if args.content is not None:
-        outs += [name(args.content), "strength" + str(args.content_strength)]
-    outs += [args.hist_mode + "hist"]
-    if args.no_pca:
-        outs += ["no_pca"]
-    if args.no_multires:
-        outs += ["no_multires"]
-    if args.style_scale != 1:
-        outs += ["scale" + str(args.style_scale)]
-    if args.color_transfer is not None:
-        outs += [args.color_transfer]
-    outs += [str(args.size)]
-    outname = "_".join(outs)
+    # Ganti bagian ini
+    outname = "img_result"
+
+    # Check if an image with the same name already exists
+    existing_files = [f for f in os.listdir(args.output_dir) if f.startswith(outname)]
+    for existing_file in existing_files:
+        os.remove(os.path.join(args.output_dir, existing_file))
+
     for o, out in enumerate(output):
         torchvision.utils.save_image(
             out, f"{args.output_dir}/{outname}" + (f"_{o + 1}" if len(output) > 1 else "") + ".png"
