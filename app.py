@@ -63,7 +63,10 @@ def texture_mixing():
         '--mixing_alpha', mixing_alpha
     ])
 
-    return redirect(url_for('index'))
+    # Get the generated images
+    generated_images = get_generated_images(style1.filename, style2.filename, mixing_alpha)
+
+    return render_template('index.html', generated_images=generated_images)
 
 
 @app.route('/Color_transfer', methods=['POST'])
@@ -90,8 +93,10 @@ def color_transfer():
         '--size', '1024'
     ])
 
-    return redirect(url_for('index'))
+    # Get the generated images
+    generated_images = get_generated_images(style.filename, content.filename, content_strength)
 
+    return render_template('index.html', generated_images=generated_images)
 
 @app.route('/Texture_synthesis', methods=['POST'])
 def texture_synthesis():
@@ -109,7 +114,10 @@ def texture_synthesis():
         '--size', size
     ])
 
-    return redirect(url_for('index'))
+    # Get the generated images
+    generated_images = get_generated_images(style.filename, '', '')  # Update this based on your filenames
+
+    return render_template('index.html', generated_images=generated_images)
 
 if __name__ == '__main__':
     app.run(debug=True)
