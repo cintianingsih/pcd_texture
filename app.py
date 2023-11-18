@@ -37,20 +37,6 @@ def generate_texture():
 
     return redirect(url_for('index'))
 
-def get_latest_generated_image():
-    output_folder = 'output'
-    generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
-    
-    # Sort filenames based on the time they were last modified
-    generated_images.sort(key=lambda x: os.path.getmtime(os.path.join(output_folder, x)), reverse=True)
-
-    return generated_images[0] if generated_images else None
-
-@app.route('/generated/<filename>')
-def serve_generated_image(filename):
-    return send_from_directory('output', filename)
-
-    
 if __name__ == '__main__':
     app.run(debug=True)
 
