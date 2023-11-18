@@ -62,29 +62,49 @@
         <br>
         <button type="submit">Run Texture Synthesis</button>
     </form>
-</body>
-</html>
-<h1>Generated Images</h1>
-    {% if generated_images %}
-        {% for image in generated_images %}
-            <img src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-            <br>
+    <h1>Generated Images</h1>
+{% if generated_images %}
+{% for image in generated_images %}
+
+ <div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-md-6">
+		<h3 class="font-size: 20px">Style Image</h3>
+                  <img class="img-fluid" src="{{ url_for('static', filename='style/img_input1.png') }}" alt="Style Image">
+              </div>
+              <div class="col-md-6">
+                <h3 class="font-size: 20px">Content Image</h3>
+                <img class="img-fluid" src="{{ url_for('static', filename='content/img_input2.png') }}" alt="Content Image">
+              </div>
+		<div class="col-md-6">
+                <h3 class="font-size: 20px">Image Result</h3>
+               <img  class="img-fluid" src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
             <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
                 <button type="button">Download Image</button>
             </a>
-            <br>
             <form action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
                 <button type="submit">Penambahan Contras</button>
             </form>
-            <br>
             <form action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
                 <button type="submit">Pengurangan Contras</button>
             </form>
-            <br>
             <form action="{{ url_for('bandFilterPass') }}" method="POST" enctype="multipart/form-data">
                 <button type="submit">Bandpass Filter</button>
             </form>
-        {% endfor %}
-    {% else %}
-        <p>No generated images available.</p>
-    {% endif %}
+{% endfor %}
+{% else %}
+<p>No generated images available.</p>
+{% endif %}
+</body>
+</html>
