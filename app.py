@@ -116,27 +116,27 @@ def texture_synthesis():
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
 
-@app.route("/brightness_multiplication", methods=["POST"])
-def brightness_multiplication():
-    util.brightness_multiplication()
+@app.route("/Contrast_Enhancement", methods=["POST"])
+def Contrast_Enhancement():
+    util.Contrast_Enhancement()
 
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
 
 
-@app.route("/brightness_division", methods=["POST"])
-def brightness_division():
-    util.brightness_division()
+@app.route("/Contrast_Reduction", methods=["POST"])
+def Contrast_Reduction():
+    util.Contrast_Reduction()
 
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
 
 #bandpass filter
-@app.route("/bandFilterPass", methods=["POST"])
-def bandFilterPass():
-    util.bandFilterPass()
+@app.route("/Sharpening", methods=["POST"])
+def Sharpening():
+    util.Sharpening()
 
     output_folder = 'output'
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]

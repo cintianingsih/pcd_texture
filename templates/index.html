@@ -1,338 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Colored Boxes with Bootstrap</title>
+  <head>
+    <title>Texture</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <style>
-        .color-box {
-            height: 100px;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-        }
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <nav class="navbar navColor">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="#">LOGO</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
 
-        .color-box:nth-child(odd) {
-            background-color: #3498db;
-        }
-
-        .color-box:nth-child(even) {
-            background-color: #e74c3c;
-        }
-
-        .image-box {
-            height: 100px;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .panel-scroll {
-            max-height: 700px; /* Sesuaikan dengan tinggi yang diinginkan */
-            overflow-y: auto;
-        }
-        
-    </style>
-</head>
-<body>
     <div class="container-fluid" >
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel-group panel-scroll" id="accordion">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Texture Generator</a>
-                            </h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                              <form action="/generate" method="post" enctype="multipart/form-data">
-                                <label for="style">Style Image:</label>
-                                <input type="file" name="style" accept="image/*" required>
-                                <br>
-                                <label for="content">Content Image:</label>
-                                <input type="file" name="content" accept="image/*" required>
-                                <br>
-                                <label for="content_strength">Content Strength:</label>
-                                <input type="text" name="content_strength" >
-                                <br>
-                                <button type="submit">Generate Texture</button>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-danger">
-                      <div class="panel-heading">
-                        <b>Texture Mixing</b>
-                      </div>
-                      <div class="panel-body">
-                        <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
-                          <label for="style1">Style Image 1:</label>
-                          <input type="file" name="style1" accept="image/*" required>
-                          <br>
-                          <label for="style2">Style Image 2:</label>
-                          <input type="file" name="style2" accept="image/*" required>
-                          <br>
-                          <label for="mixing_alpha">Mixing Alpha:</label>
-                          <input type="text" name="mixing_alpha">
-                          <br>
-                          <button type="submit">Run Texture Mixing</button>
-                      </form>
-                      </div>
-                    </div>
-                    <br/>
-                  
-                    <div class="panel panel-info">
-                      <div class="panel-heading">
-                        <b>Color Transfer</b>
-                      </div>
-                      <div class="panel-body">
-                        <form action="/Color_transfer" method="post" enctype="multipart/form-data">
-                          <label for="style_color">Style Image:</label>
-                          <input type="file" name="style" accept="image/*" required>
-                          <br>
-                          <label for="content_color">Content Image:</label>
-                          <input type="file" name="content" accept="image/*" required>
-                          <br>
-                          <label for="style_scale">Style Scale:</label>
-                          <input type="text" name="style_scale">
-                          <br>
-                          <label for="content_strength_color">Content Strength:</label>
-                          <input type="text" name="content_strength">
-                          <br>
-                          <button type="submit">Run Color Transfer</button>
-                      </form>
-                      </div>
-                    </div>
-                    <br/>
-                  
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Texture Synthesis</b>
-                      </div>
-                      <div class="panel-body">
-                        <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
-                          <label for="style_synthesis">Style Image:</label>
-                          <input type="file" name="style" accept="image/*" required>
-                          <br>
-                          <label for="size_synthesis">Size:</label>
-                          <input type="text" name="size">
-                          <br>
-                          <button type="submit">Run Texture Synthesis</button>
-                      </form>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Panel Warning</b>
-                      </div>
-                      <div class="panel-body">
-                        <p>Membuat panel warning dengan bootstrap</p>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Panel Warning</b>
-                      </div>
-                      <div class="panel-body">
-                        <p>Membuat panel warning dengan bootstrap</p>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Panel Warning</b>
-                      </div>
-                      <div class="panel-body">
-                        <p>Membuat panel warning dengan bootstrap</p>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Panel Warning</b>
-                      </div>
-                      <div class="panel-body">
-                        <p>Membuat panel warning dengan bootstrap</p>
-                      </div>
-                    </div>
-
-                    <div class="panel panel-warning">
-                      <div class="panel-heading">
-                        <b>Panel Warning</b>
-                      </div>
-                      <div class="panel-body">
-                        <p>Membuat panel warning dengan bootstrap</p>
-                      </div>
-                    </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel-group panel-scroll" id="accordion">
+            <div class="panel panel-success">
+              <div class="panel-heading"><b>Texture Generator</b></div>
+                <!-- <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Texture Generator</a>
+                </h4> -->
+              <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <form action="/generate" method="post" enctype="multipart/form-data">
+                    <label for="style">Input Image 1 : </label>
+                    <input type="file" name="style" accept="image/*" required>
+                    <br>
+                    <label for="content">Input Image 2 :</label>
+                    <input type="file" name="content" accept="image/*" required>
+                    <br>
+                    <label for="content_strength">Content Strength:</label>
+                    <br>
+                    <input type="text" name="content_strength" placeholder="0.2">
+                    <br><br>
+                    <button type="submit" class="btn btn-success float-right">Generate Texture</button>
+                  </form>
                 </div>
               </div>
-            <div class="col-md-6">
-              <div class="container" style="margin: 0;">
-                      <div class="row">
-                        <div class="col-md-5">
-                          <div class="panel panel-warning">
-                            <div class="panel-heading">
-                              <b>Before</b>
-                            </div>
-                            <div class="panel-body">
-                              <!-- Isi panel pertama di sini -->
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="panel panel-warning">
-                            <div class="panel-heading">
-                              <b>Before</b>
-                            </div>
-                            <div class="panel-body">
-                              <!-- Isi panel kedua di sini -->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container mx-auto">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="panel panel-warning">
-                                  <div class="panel-heading">
-                                      <b>After</b>
-                                  </div>
-                                  <div class="panel-body">
-                                      <!-- Isi panel body di sini -->
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
             </div>
+
+            <div class="panel panel-danger">
+              <div class="panel-heading"><b>Texture Mixing</b></div>
+              <div class="panel-body">
+                <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
+                  <label for="style1">Input Image 1 : </label>
+                  <input type="file" name="style1" accept="image/*" required>
+                  <br>
+                  <label for="style2">Input Image 2 : </label>
+                  <input type="file" name="style2" accept="image/*" required>
+                  <br>
+                  <label for="mixing_alpha">Mixing Alpha:</label>
+                  <br>
+                  <input type="text" name="mixing_alpha" placeholder="0.5">
+                  <br><br>
+                  <button type="submit" class="btn btn-danger float-right">Texture Mixing</button>
+                </form>
+              </div>
+            </div>
+                      
+            <div class="panel panel-info">
+              <div class="panel-heading"><b>Color Transfer</b></div>
+              <div class="panel-body">
+                <form action="/Color_transfer" method="post" enctype="multipart/form-data">
+                  <label for="style_color">Input Image 1 : </label>
+                  <input type="file" name="style" accept="image/*" required>
+                  <br>
+                  <label for="content_color">Input Image 2 : </label>
+                  <input type="file" name="content" accept="image/*" required>
+                  <br>
+                  <label for="style_scale">Style Scale:</label>
+                  <br>
+                  <input type="text" name="style_scale" placeholder="0.5">
+                  <br><br>
+                  <label for="content_strength_color">Content Strength:</label>
+                  <br>
+                  <input type="text" name="content_strength" placeholder="0.2">
+                  <br><br>
+                  <button type="submit" class="btn btn-info float-right">Color Transfer</button>
+                </form>
+              </div>
+            </div>
+            
+            <div class="panel panel-warning">
+              <div class="panel-heading"><b>Texture Synthesis</b></div>
+              <div class="panel-body">
+                <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
+                  <label for="style_synthesis">Style Image:</label>
+                  <input type="file" name="style" accept="image/*" required>
+                  <br>
+                  <label for="size_synthesis">Size:</label>
+                  <input type="text" name="size">
+                  <br>
+                  <button type="submit">Run Texture Synthesis</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {% if generated_images %}
+        {% for image in generated_images %}
+        <div class="col-md-8">
+          <div class="row">
+            <div class="panel panel-warning">
+              <div class="panel-heading"><b>Before</b></div>
+              <div class="panel-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col-6" class="text-center">Image 1</th>
+                      <th scope="col-6" class="text-center">Image 2</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr>
+                      <td class="text-center">
+                        <img class="img-fluid" src="{{ url_for('static', filename='style/img_input1.png') }}" alt="Style Image">
+                      </td>
+                      <td class="text-center">
+                        <img class="img-fluid" src="{{ url_for('static', filename='content/img_input2.png') }}" alt="Content Image">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="panel panel-warning">
+              <div class="panel-heading"><b>After</b></div>
+              <div class="panel-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 25.333%;">Action</th>
+                      <th class="text-center" style="width: 74.666%;">Image Result</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr>
+                      <td class="text-center" style="width: 25.333%;">
+                        <form action="{{ url_for('Contrast_Enhancement') }}" method="POST" enctype="multipart/form-data">
+                          <button type="submit" class="btn btn-warning btn-result">Contrast Enhancement</button>
+                        </form><br>
+                        <form action="{{ url_for('Contrast_Reduction') }}" method="POST" enctype="multipart/form-data">
+                          <button type="submit" class="btn btn-warning btn-result">Contrast Reduction</button>
+                        </form><br>
+                        <form action="{{ url_for('Sharpening') }}" method="POST" enctype="multipart/form-data">
+                          <button type="submit" class="btn btn-warning btn-result">Sharpening</button>
+                        </form>
+                      </td>
+                      <td class="text-center" style="width: 74.666%;">
+                        <img class="img-result" src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+  
+                <table class="table table-borderless">
+                  <tbody>
+                    <tr>
+                      <th class="text-right">
+                        <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
+                          <button type="button" class="btn btn-warning btn-result">Download Image</button>
+                        </a>
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col-md-8">
+          <div class="row">
+            <div class="panel panel-warning">
+              <div class="panel-heading"><b>Before</b></div>
+              <div class="panel-body">
+                <p class="text-center">No generated images available.</p>
+              </div>
+            </div>
+
+            <div class="panel panel-warning">
+              <div class="panel-heading"><b>After</b></div>
+              <div class="panel-body">
+                <p class="text-center">No generated images available.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texture Generator</title>
-</head>
-<body>
-    <h1>Texture Generator</h1>
-    <form action="/generate" method="post" enctype="multipart/form-data">
-        <label for="style">Style Image:</label>
-        <input type="file" name="style" accept="image/*" required>
-        <br>
-        <label for="content">Content Image:</label>
-        <input type="file" name="content" accept="image/*" required>
-        <br>
-        <label for="content_strength">Content Strength:</label>
-        <input type="text" name="content_strength" >
-        <br>
-        <button type="submit">Generate Texture</button>
-    </form>
-    </form>
-    <h2>Texture Mixing</h2>
-    <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
-        <label for="style1">Style Image 1:</label>
-        <input type="file" name="style1" accept="image/*" required>
-        <br>
-        <label for="style2">Style Image 2:</label>
-        <input type="file" name="style2" accept="image/*" required>
-        <br>
-        <label for="mixing_alpha">Mixing Alpha:</label>
-        <input type="text" name="mixing_alpha">
-        <br>
-        <button type="submit">Run Texture Mixing</button>
-        
-    </form>
-    <h2>Color Transfer</h2>
-    <form action="/Color_transfer" method="post" enctype="multipart/form-data">
-        <label for="style_color">Style Image:</label>
-        <input type="file" name="style" accept="image/*" required>
-        <br>
-        <label for="content_color">Content Image:</label>
-        <input type="file" name="content" accept="image/*" required>
-        <br>
-        <label for="style_scale">Style Scale:</label>
-        <input type="text" name="style_scale">
-        <br>
-        <label for="content_strength_color">Content Strength:</label>
-        <input type="text" name="content_strength">
-        <br>
-        <button type="submit">Run Color Transfer</button>
-    </form>
-
-    <h2>Texture Synthesis</h2>
-    <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
-        <label for="style_synthesis">Style Image:</label>
-        <input type="file" name="style" accept="image/*" required>
-        <br>
-        <label for="size_synthesis">Size:</label>
-        <input type="text" name="size">
-        <br>
-        <button type="submit">Run Texture Synthesis</button>
-    </form>
-    <h1>Generated Images</h1>
-{% if generated_images %}
-{% for image in generated_images %}
-
- <div class="container-fluid">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="col-md-6">
-		<h3 class="font-size: 20px">Style Image</h3>
-                  <img class="img-fluid" src="{{ url_for('static', filename='style/img_input1.png') }}" alt="Style Image">
-              </div>
-              <div class="col-md-6">
-                <h3 class="font-size: 20px">Content Image</h3>
-                <img class="img-fluid" src="{{ url_for('static', filename='content/img_input2.png') }}" alt="Content Image">
-              </div>
-		<div class="col-md-6">
-                <h3 class="font-size: 20px">Image Result</h3>
-               <img  class="img-fluid" src="{{ url_for('serve_generated_image', filename=image) }}" alt="Generated Image">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-            <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
-                <button type="button">Download Image</button>
-            </a>
-            <form action="{{ url_for('brightness_multiplication') }}" method="POST" enctype="multipart/form-data">
-                <button type="submit">Penambahan Contras</button>
-            </form>
-            <form action="{{ url_for('brightness_division') }}" method="POST" enctype="multipart/form-data">
-                <button type="submit">Pengurangan Contras</button>
-            </form>
-            <form action="{{ url_for('bandFilterPass') }}" method="POST" enctype="multipart/form-data">
-                <button type="submit">Bandpass Filter</button>
-            </form>
-{% endfor %}
-{% else %}
-<p>No generated images available.</p>
-{% endif %}
-</body>
+  </body>
 </html>

@@ -99,7 +99,7 @@ def to_nhwc(x: Tensor):
 def resize(x: Tensor, size: Tuple[int, int]):
     return interpolate(x, size=size, mode="bicubic", align_corners=False, antialias=True)
 
-def brightness_multiplication():
+def Contrast_Enhancement():
     img = Image.open("output/img_result.png")
     img_arr = np.asarray(img)
     img_arr = img_arr*1.25
@@ -108,7 +108,7 @@ def brightness_multiplication():
     new_img = Image.fromarray(new_arr)
     new_img.save("output/img_result.png")
 
-def brightness_division():
+def Contrast_Reduction():
     img = Image.open("output/img_result.png")
     img_arr = np.asarray(img)
     img_arr = img_arr/1.25
@@ -117,7 +117,7 @@ def brightness_division():
     new_img = Image.fromarray(new_arr)
     new_img.save("output/img_result.png")
 
-def bandFilterPass():
+def Sharpening():
     img = cv2.imread("output/img_result.png")
     # create the band pass filter
     bandFilter = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])
