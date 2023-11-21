@@ -1,6 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Colored Boxes with Bootstrap</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .color-box {
+            height: 100px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .color-box:nth-child(odd) {
+            background-color: #3498db;
+        }
+
+        .color-box:nth-child(even) {
+            background-color: #e74c3c;
+        }
+
+        .image-box {
+            height: 100px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .panel-scroll {
+            max-height: 700px; /* Sesuaikan dengan tinggi yang diinginkan */
+            overflow-y: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel-group panel-scroll" id="accordion">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Texture Generator</a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                              <form action="/generate" method="post" enctype="multipart/form-data">
+                                <label for="style">Style Image:</label>
+                                <input type="file" name="style" accept="image/*" required>
+                                <br>
+                                <label for="content">Content Image:</label>
+                                <input type="file" name="content" accept="image/*" required>
+                                <br>
+                                <label for="content_strength">Content Strength:</label>
+                                <input type="text" name="content_strength" >
+                                <br>
+                                <button type="submit">Generate Texture</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        <b>Texture Mixing</b>
+                      </div>
+                      <div class="panel-body">
+                        <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
+                          <label for="style1">Style Image 1:</label>
+                          <input type="file" name="style1" accept="image/*" required>
+                          <br>
+                          <label for="style2">Style Image 2:</label>
+                          <input type="file" name="style2" accept="image/*" required>
+                          <br>
+                          <label for="mixing_alpha">Mixing Alpha:</label>
+                          <input type="text" name="mixing_alpha">
+                          <br>
+                          <button type="submit">Run Texture Mixing</button>
+                      </form>
+                      </div>
+                    </div>
+                    <br/>
+                  
+                    <div class="panel panel-info">
+                      <div class="panel-heading">
+                        <b>Color Transfer</b>
+                      </div>
+                      <div class="panel-body">
+                        <form action="/Color_transfer" method="post" enctype="multipart/form-data">
+                          <label for="style_color">Style Image:</label>
+                          <input type="file" name="style" accept="image/*" required>
+                          <br>
+                          <label for="content_color">Content Image:</label>
+                          <input type="file" name="content" accept="image/*" required>
+                          <br>
+                          <label for="style_scale">Style Scale:</label>
+                          <input type="text" name="style_scale">
+                          <br>
+                          <label for="content_strength_color">Content Strength:</label>
+                          <input type="text" name="content_strength">
+                          <br>
+                          <button type="submit">Run Color Transfer</button>
+                      </form>
+                      </div>
+                    </div>
+                    <br/>
+                  
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Texture Synthesis</b>
+                      </div>
+                      <div class="panel-body">
+                        <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
+                          <label for="style_synthesis">Style Image:</label>
+                          <input type="file" name="style" accept="image/*" required>
+                          <br>
+                          <label for="size_synthesis">Size:</label>
+                          <input type="text" name="size">
+                          <br>
+                          <button type="submit">Run Texture Synthesis</button>
+                      </form>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Panel Warning</b>
+                      </div>
+                      <div class="panel-body">
+                        <p>Membuat panel warning dengan bootstrap</p>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Panel Warning</b>
+                      </div>
+                      <div class="panel-body">
+                        <p>Membuat panel warning dengan bootstrap</p>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Panel Warning</b>
+                      </div>
+                      <div class="panel-body">
+                        <p>Membuat panel warning dengan bootstrap</p>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Panel Warning</b>
+                      </div>
+                      <div class="panel-body">
+                        <p>Membuat panel warning dengan bootstrap</p>
+                      </div>
+                    </div>
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <b>Panel Warning</b>
+                      </div>
+                      <div class="panel-body">
+                        <p>Membuat panel warning dengan bootstrap</p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            <div class="col-md-6">
+              <div class="container" style="margin: 0;">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="panel panel-warning">
+                            <div class="panel-heading">
+                              <b>Before</b>
+                            </div>
+                            <div class="panel-body">
+                              <!-- Isi panel pertama di sini -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="panel panel-warning">
+                            <div class="panel-heading">
+                              <b>Before</b>
+                            </div>
+                            <div class="panel-body">
+                              <!-- Isi panel kedua di sini -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container mx-auto">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="panel panel-warning">
+                                  <div class="panel-heading">
+                                      <b>After</b>
+                                  </div>
+                                  <div class="panel-body">
+                                      <!-- Isi panel body di sini -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
