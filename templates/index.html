@@ -4,34 +4,31 @@
     <title>Texture</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
   </head>
   <body>
-    <nav class="navbar navColor">
-      <div class="container-fluid">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="#">LOGO</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+      <div class="container px-5">
+          <a class="navbar-brand" href="home.html"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}" style="padding-left:900px">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
               </ul>
           </div>
       </div>
-    </nav>
-
+  </nav>
+  
     <div class="container-fluid" >
       <div class="row">
         <div class="col-md-4">
           <div class="panel-group panel-scroll" id="accordion">
             <div class="panel panel-success">
               <div class="panel-heading"><b>Texture Generator</b></div>
-                <!-- <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Texture Generator</a>
-                </h4> -->
-              <div id="collapse1" class="panel-collapse collapse in">
+           
                 <div class="panel-body">
                   <form action="/generate" method="post" enctype="multipart/form-data">
                     <label for="style">Input Image 1 : </label>
@@ -46,7 +43,7 @@
                     <br><br>
                     <button type="submit" class="btn btn-success float-right">Generate Texture</button>
                   </form>
-                </div>
+              
               </div>
             </div>
 
@@ -205,7 +202,7 @@
       
       </div>
     </div>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
