@@ -11646,24 +11646,22 @@ html {
 }
 
 .profile {
-  position: relative;
-  height: 75vw;
-  width: 75vw;
-  border-radius: 5vw;
-  margin-top: 5vw;
-  max-height: 20rem;
-  max-width: 25rem;
-}
-.profile .profile-img {
-  height: 70vw;
-  max-height: 20rem;
-  max-width: 25rem;
-  position: relative;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 250px;
-}
+    position: relative;
+    height: 75vw;
+    width: 75vw;
+    border-radius: 5vw;
+    margin-top: 5vw;
+    max-height: 25rem;
+    max-width: 25rem;
+  }
+  .profile .profile-img {
+    height: 80vw;
+    max-height: 45rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
 @media (min-width: 768px) {
   .profile {
