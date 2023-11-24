@@ -108,26 +108,6 @@ def color_transfer():
     generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
     return render_template('index.html', generated_images=generated_images)
 
-@app.route('/Texture_synthesis', methods=['POST'])
-def texture_synthesis():
-    style = request.files['style']
-    size = request.form['size']
-
-    # Save the uploaded style image to the static directory
-    style_path = f'static/style/img_input1.png'
-    style.save(style_path)
-
-    # Run the Python script for texture synthesis using subprocess
-    subprocess.run([
-        'python', 'optex.py',
-        '--style', style_path,
-        '--size', size
-    ])
-
-    output_folder = 'output'
-    generated_images = [filename for filename in os.listdir(output_folder) if filename.endswith('.png')]
-    return render_template('index.html', generated_images=generated_images)
-
 @app.route("/Contrast_Enhancement", methods=["POST"])
 def Contrast_Enhancement():
     util.Contrast_Enhancement()

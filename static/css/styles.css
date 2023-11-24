@@ -36,7 +36,7 @@
 }
 
 .img-result{
-    width: 540px; 
+    width: 530px; 
     height: auto;
 }
 
@@ -63,7 +63,14 @@
     width: 170px;
     height: 35px;
 }
-
+.button-style {
+  background-color: #121d92; 
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Sesuaikan dengan kebutuhan Anda */
+  border-radius: 5px; /* Untuk memberikan sedikit lekukan pada sudut tombol */
+  cursor: pointer;
+}
 /* Home */
 
 /*!
@@ -11738,3 +11745,21 @@ html {
     left: -2vw;
   }
 }
+.btn-outline-dark.btn-white:hover {
+  background-color: #C8A2C8;
+  border-color: #C8A2C8;
+  color: white;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -4px 8px rgba(0, 0, 0, 0.1), -4px 0 8px rgba(0, 0, 0, 0.1), 4px 0 8px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-white:hover {
+  background-color: #C8A2C8;
+  border-color: #C8A2C8;
+  color: #ffffff;
+}
+

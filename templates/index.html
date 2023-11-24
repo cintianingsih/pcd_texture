@@ -1,107 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Texture</title>
+    <title>Texture Kel-3</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+  <body class="d-flex flex-column h-100 ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradient-primary-to-secondary py-3">
       <div class="container px-5">
-          <a class="navbar-brand" href="home.html"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+          <a class="navbar-brand"><span class="fw-bolder text-white">CiCiNe</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                  <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}" style="padding-left:900px">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}" >Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
               </ul>
           </div>
       </div>
-  </nav>
+    </nav>
   
-    <div class="container-fluid" >
+    <div class="container-fluid px-5 my-4" >
+      <div class="text-center mb-4">
+        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Fitur</span></h1>
+    </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="panel-group panel-scroll" id="accordion">
-            <div class="panel panel-success">
-              <div class="panel-heading"><b>Texture Generator</b></div>
-           
-                <div class="panel-body">
-                  <form action="/generate" method="post" enctype="multipart/form-data">
-                    <label for="style">Input Image 1 : </label>
-                    <input type="file" name="style" accept="image/*" required>
-                    <br>
-                    <label for="content">Input Image 2 :</label>
-                    <input type="file" name="content" accept="image/*" required>
-                    <br>
-                    <label for="content_strength">Content Strength:</label>
-                    <br>
-                    <input type="text" name="content_strength" placeholder="0.2">
-                    <br><br>
-                    <button type="submit" class="btn btn-success float-right">Generate Texture</button>
-                  </form>
-              
-              </div>
-            </div>
+          <div class="accordion" id="accordion">
 
-            <div class="panel panel-danger">
-              <div class="panel-heading"><b>Texture Mixing</b></div>
-              <div class="panel-body">
-                <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
-                  <label for="style1">Input Image 1 : </label>
-                  <input type="file" name="style1" accept="image/*" required>
-                  <br>
-                  <label for="style2">Input Image 2 : </label>
-                  <input type="file" name="style2" accept="image/*" required>
-                  <br>
-                  <label for="mixing_alpha">Mixing Alpha:</label>
-                  <br>
-                  <input type="text" name="mixing_alpha" placeholder="0.5">
-                  <br><br>
-                  <button type="submit" class="btn btn-danger float-right">Texture Mixing</button>
-                </form>
-              </div>
+            <!-- Texture Generator Panel -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="textureGenerator">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTextureGenerator" aria-expanded="true" aria-controls="collapseTextureGenerator" style="background-color:  rgb(210,214,253); color: #fff;">
+                        <b style = "color: #121d92;">Texture Generator</b>
+                    </button>
+                </h2>
+                <div id="collapseTextureGenerator" class="accordion-collapse collapse" aria-labelledby="textureGenerator" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <form action="/generate" method="post" enctype="multipart/form-data">
+                            <label for="style" class="form-label">Input Image 1 :</label>
+                            <input type="file" name="style" class="form-control" accept="image/*" required>
+                            <label for="content" class="form-label">Input Image 2 :</label>
+                            <input type="file" name="content" class="form-control" accept="image/*" required>
+                            <label for="content_strength" class="form-label">Content Strength:</label>
+                            <input type="text" name="content_strength" class="form-control" placeholder="0.2">
+                            <br>
+                            <button type="submit" class="button-style float-end">Generate Texture</button><br><br>
+                        </form>
+                    </div>
+                </div>
             </div>
-                      
-            <div class="panel panel-info">
-              <div class="panel-heading"><b>Color Transfer</b></div>
-              <div class="panel-body">
-                <form action="/Color_transfer" method="post" enctype="multipart/form-data">
-                  <label for="style_color">Input Image 1 : </label>
-                  <input type="file" name="style" accept="image/*" required>
-                  <br>
-                  <label for="content_color">Input Image 2 : </label>
-                  <input type="file" name="content" accept="image/*" required>
-                  <br>
-                  <label for="style_scale">Style Scale:</label>
-                  <br>
-                  <input type="text" name="style_scale" placeholder="0.5">
-                  <br><br>
-                  <label for="content_strength_color">Content Strength:</label>
-                  <br>
-                  <input type="text" name="content_strength" placeholder="0.2">
-                  <br><br>
-                  <button type="submit" class="btn btn-info float-right">Color Transfer</button>
-                </form>
-              </div>
+        
+            <!-- Texture Mixing Panel -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="textureMixing">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTextureMixing" aria-expanded="true" aria-controls="collapseTextureMixing" style="background-color:  rgb(210,214,253); color: #fff;">
+                        <b style = "color: #121d92;">Texture Mixing</b>
+                    </button>
+                </h2>
+                <div id="collapseTextureMixing" class="accordion-collapse collapse" aria-labelledby="textureMixing" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <form action="/Texture_mixing" method="post" enctype="multipart/form-data">
+                            <label for="style1" class="form-label">Input Image 1 :</label>
+                            <input type="file" name="style1" class="form-control" accept="image/*" required>
+                            <label for="style2" class="form-label">Input Image 2 :</label>
+                            <input type="file" name="style2" class="form-control" accept="image/*" required>
+                            <label for="mixing_alpha" class="form-label">Mixing Alpha:</label>
+                            <input type="text" name="mixing_alpha" class="form-control" placeholder="0.5">
+                            <br>
+                            <button type="submit" class="button-style float-end">Texture Mixing</button><br><br>
+                        </form>
+                    </div>
+                </div>
             </div>
-            
-            <div class="panel panel-warning">
-              <div class="panel-heading"><b>Texture Synthesis</b></div>
-              <div class="panel-body">
-                <form action="/Texture_synthesis" method="post" enctype="multipart/form-data">
-                  <label for="style_synthesis">Style Image:</label>
-                  <input type="file" name="style" accept="image/*" required>
-                  <br>
-                  <label for="size_synthesis">Size:</label>
-                  <input type="text" name="size">
-                  <br>
-                  <button type="submit">Run Texture Synthesis</button>
-                </form>
-              </div>
+        
+            <!-- Color Transfer Panel -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="colorTransfer">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColorTransfer" aria-expanded="true" aria-controls="collapseColorTransfer" style="background-color:  rgb(210,214,253); color: #fff;">
+                        <b style = "color: #121d92;">Color Transfer</b>
+                    </button>
+                </h2>
+                <div id="collapseColorTransfer" class="accordion-collapse collapse" aria-labelledby="colorTransfer" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <form action="/Color_transfer" method="post" enctype="multipart/form-data">
+                            <label for="style_color" class="form-label">Input Image 1 :</label>
+                            <input type="file" name="style" class="form-control" accept="image/*" required>
+                            <label for="content_color" class="form-label">Input Image 2 :</label>
+                            <input type="file" name="content" class="form-control" accept="image/*" required>
+                            <label for="style_scale" class="form-label">Style Scale:</label>
+                            <input type="text" name="style_scale" class="form-control" placeholder="0.5">
+                            <label for="content_strength_color" class="form-label">Content Strength:</label>
+                            <input type="text" name="content_strength" class="form-control" placeholder="0.2"><br>
+                            <button type="submit" class="button-style float-end">Color Transfer</button><br><br>
+                        </form>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -110,9 +113,9 @@
         {% for image in generated_images %}
         <div class="col-md-8">
           <div class="row">
-            <div class="panel panel-warning">
-              <div class="panel-heading"><b>Before</b></div>
-              <div class="panel-body">
+            <div class="alert alert-primary" role="alert">
+              <div class="alert-heading"><b>Before</b></div>
+              <div class="alert-body">
                 <table class="table">
                   <thead>
                     <tr>
@@ -134,9 +137,9 @@
               </div>
             </div>
 
-            <div class="panel panel-warning">
-              <div class="panel-heading"><b>After</b></div>
-              <div class="panel-body">
+            <div class="alert alert-primary" role="alert">
+              <div class="alert-heading"><b>After</b></div>
+              <div class="alert-body">
                 <table class="table">
                   <thead>
                     <tr>
@@ -148,13 +151,13 @@
                     <tr>
                       <td class="text-center" style="width: 25.333%;">
                         <form action="{{ url_for('Contrast_Enhancement') }}" method="POST" enctype="multipart/form-data">
-                          <button type="submit" class="btn btn-warning btn-result">Contrast Enhancement</button>
+                          <button type="submit" class="btn btn-result" style="font-size: 13px;background-color: #121d92; color: white;">Contrast Enhancement</button>
                         </form><br>
                         <form action="{{ url_for('Contrast_Reduction') }}" method="POST" enctype="multipart/form-data">
-                          <button type="submit" class="btn btn-warning btn-result">Contrast Reduction</button>
+                          <button type="submit" class="btn btn-result" style="font-size: 13px;background-color: #121d92; color: white;">Contrast Reduction</button>
                         </form><br>
                         <form action="{{ url_for('Sharpening') }}" method="POST" enctype="multipart/form-data">
-                          <button type="submit" class="btn btn-warning btn-result">Sharpening</button>
+                          <button type="submit" class="btn btn-result" style="font-size: 13px;background-color: #121d92; color: white;">Sharpening</button>
                         </form>
                       </td>
                       <td class="text-center" style="width: 74.666%;">
@@ -169,7 +172,7 @@
                     <tr>
                       <th class="text-right">
                         <a href="{{ url_for('serve_generated_image', filename=image) }}" download="{{ image }}">
-                          <button type="button" class="btn btn-warning btn-result">Download Image</button>
+                          <button type="button" class="btn btn-result float-end" style="font-size: 13px; background-color: #121d92; color: white;">Download Image</button>
                         </a>
                       </th>
                     </tr>
@@ -183,29 +186,28 @@
         {% else %}
         <div class="col-md-8">
           <div class="row">
-            <div class="panel panel-warning">
-              <div class="panel-heading"><b>Before</b></div>
-              <div class="panel-body">
+            <div class="alert alert-primary" role="alert">
+              <div class="alert-heading"><b>Before</b></div>
+              <div class="alert-body">
                 <p class="text-center">No generated images available.</p>
               </div>
-            </div>
+            </div>            
 
-            <div class="panel panel-warning">
-              <div class="panel-heading"><b>After</b></div>
-              <div class="panel-body">
+            <div class="alert alert-primary" role="alert">
+              <div class="alert-heading"><b>After</b></div>
+              <div class="alert-body">
                 <p class="text-center">No generated images available.</p>
               </div>
-            </div>
+            </div> 
           </div>
         </div>
         {% endif %}
-      
       </div>
-    </div>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </div> 
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
